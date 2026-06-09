@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>리스크 분석 리포트</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#060a10;color:#e2e8f0;font-family:'Noto Sans KR',sans-serif;min-height:100vh}
+#hdr{background:#080c12;border-bottom:1px solid #1e293b;padding:16px 24px;position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.logo{display:flex;align-items:center;gap:13px}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;font-size:19px;font-family:'IBM Plex Mono',monospace}
+.main{max-width:800px;margin:0 auto;padding:28px 16px}
+select{background:#0d1117;border:1px solid #1e293b;border-radius:10px;padding:10px 16px;color:#e2e8f0;font-family:inherit;font-size:14px;outline:none;cursor:pointer}
+.rcard{border-radius:14px;overflow:hidden;margin-bottom:20px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.rcard-hdr{display:flex;align-items:center;justify-content:space-between;padding:17px 22px}
+.badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:800}
+.risk-item{background:#090c10;border-radius:12px;padding:17px 20px;border:1px solid #1e293b;border-left-width:5px;margin-bottom:10px}
+.risk-hdr{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.risk-num{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#000}
+.risk-title{flex:1;font-size:15px;font-weight:800;color:#f1f5f9;line-height:1.4}
+.risk-sev{flex-shrink:0;font-size:10px;font-weight:800;border-radius:4px;padding:2px 7px;border-width:1px;border-style:solid;opacity:.85}
+.risk-detail{font-size:13px;color:#94a3b8;line-height:1.85;padding-left:32px;white-space:pre-wrap}
+.src{font-size:12px;color:#475569;margin-top:12px;padding-left:22px;border-top:1px solid #1e293b;padding-top:12px}
+.src a{color:#60a5fa;text-decoration:none;display:block;margin-bottom:5px}.src a:hover{text-decoration:underline}
+.empty{text-align:center;padding:80px 0;color:#334155}
+.lbl{font-size:10px;color:#475569;font-weight:800;letter-spacing:2px;margin-bottom:12px}
+.foot{text-align:center;color:#334155;font-size:11px;padding:30px 0}
+</style></head><body>
+<div id="hdr">
+  <div class="logo"><div class="logo-icon">W</div>
+    <div><div style="font-weight:900;color:#f59e0b;font-size:16px;font-family:'IBM Plex Mono',monospace;letter-spacing:1px">WATCHLIST PRO</div>
+    <div style="font-size:10px;color:#475569;font-weight:700;margin-top:2px">기업 리스크 분석 리포트 · 조회 전용</div></div>
+  </div>
+  <select id="date-sel" onchange="render()"></select>
+</div>
+<div class="main"><div id="content"></div><div class="foot" id="foot"></div></div>
+<script>
+const SENT={positive:{border:'#059669',label:'긍정 📈',bg:'#064e3b',text:'#6ee7b7'},neutral:{border:'#475569',label:'중립 ➖',bg:'#1e293b',text:'#94a3b8'},negative:{border:'#dc2626',label:'리스크 ⚠️',bg:'#450a0a',text:'#f87171'}};
+const SVC={high:'#dc2626',medium:'#f59e0b',low:'#3b82f6'};
+const SVL={high:'상',medium:'중',low:'하'};
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const fmt=s=>s?s.slice(0,4)+'.'+s.slice(5,7)+'.'+s.slice(8,10):'';
+let DATA=null;
+async function load(){
+  try{
+    const r=await fetch('data.json?t='+Date.now());
+    DATA=await r.json();
+    const dates=Object.keys(DATA.reports||{}).sort((a,b)=>b.localeCompare(a));
+    const sel=document.getElementById('date-sel');
+    sel.innerHTML=dates.map(d=>'<option value="'+d+'">'+fmt(d)+' 리포트</option>').join('');
+    render();
+    if(DATA.updated)document.getElementById('foot').textContent='최종 업데이트: '+new Date(DATA.updated).toLocaleString('ko-KR');
+  }catch(e){
+    document.getElementById('content').innerHTML='<div class="empty">리포트를 불러올 수 없습니다.<br>잠시 후 새로고침 해주세요.</div>';
+  }
+}
+function render(){
+  const date=document.getElementById('date-sel').value;
+  const data=DATA.reports[date];
+  if(!data){document.getElementById('content').innerHTML='<div class="empty">데이터가 없습니다.</div>';return;}
+  document.getElementById('content').innerHTML=Object.entries(data).map(([name,res])=>{
+    const s=SENT[res.overall_sentiment]||SENT.neutral;
+    const risks=res.risk_factors||[];
+    const srcs=res.sources||[];
+    const riskHtml=risks.length===0
+      ?'<div style="padding:40px 22px;text-align:center;color:#475569;font-size:14px">신규 리스크가 발견되지 않았습니다.</div>'
+      :'<div style="padding:18px 22px">'+risks.map(rf=>{const c=SVC[rf.severity]||'#f59e0b';return '<div class="risk-item" style="border-left-color:'+c+'"><div class="risk-hdr"><span class="risk-num" style="background:'+c+'">'+(rf.rank||'')+'</span><span class="risk-title">'+esc(rf.title)+'</span><span class="risk-sev" style="color:'+c+';border-color:'+c+'">심각도 '+(SVL[rf.severity]||'-')+'</span></div><div class="risk-detail">'+esc(rf.detail)+'</div></div>';}).join('')
+      +(srcs.length?'<div class="src"><div class="lbl">검토 기사</div>'+srcs.map(x=>x.url?'<a href="'+esc(x.url)+'" target="_blank">· '+esc(x.title)+' ('+esc(x.source||'')+')</a>':'<div style="margin-bottom:5px">· '+esc(x.title)+'</div>').join('')+'</div>':'')
+      +'</div>';
+    return '<div class="rcard" style="border:1px solid '+s.border+';background:#0d1117"><div class="rcard-hdr"><div style="font-weight:900;font-size:17px">'+esc(name)+'</div><span class="badge" style="background:'+s.bg+';color:'+s.text+';border:1px solid '+s.border+'">'+s.label+'</span></div>'+riskHtml+'</div>';
+  }).join('');
+}
+load();
+</script></body></html>
