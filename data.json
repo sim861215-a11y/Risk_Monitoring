@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-27T05:48:34.336Z",
-  "latest": "2026-07-27",
+  "updated": "2026-08-03T00:09:38.318Z",
+  "latest": "2026-08-03",
   "reports": {
     "2026-06-10": {
       "에스엘엘중앙": {
@@ -934,6 +934,120 @@
         "overall_sentiment": "positive",
         "skip_reason": "no_new_news",
         "timestamp": 1785131284168
+      }
+    },
+    "2026-08-03": {
+      "에스엘엘중앙": {
+        "company": "에스엘엘중앙",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1785715736623
+      },
+      "JTBC": {
+        "company": "JTBC",
+        "risk_factors": [
+          {
+            "rank": 1,
+            "title": "회생절차 개시 여부 보류기간 재연장, 구조조정 불확실성 지속",
+            "detail": "서울회생법원이 2026년 7월 29일 JTBC의 자율구조조정(ARS) 프로그램에 따른 회생절차 개시 여부 보류기간을 기존 7월 30일에서 8월 30일까지 한 달 추가 연장하기로 결정하였습니다. 이는 채권자와 채무자 간 구조조정 협의를 지원하기 위한 조치로, JTBC는 입장문을 통해 채권자들에게 사과의 뜻을 전하며 경영 정상화 의지를 밝혔습니다. 협의가 성립되면 회생신청을 취하하고 자율구조조정 방안을 이행하게 되나, 결렬 시에는 법원이 회생절차 개시 여부를 직접 결정하게 됩니다. 채무조정 협상이 두 달 가까이 결론에 이르지 못하고 있다는 점에서 신용 불확실성이 지속되고 있는 것으로 판단됩니다.",
+            "severity": "medium"
+          }
+        ],
+        "sources": [
+          {
+            "title": "법원, JTBC 회생절차 개시결정 보류기간 연장…다음달 30일까지",
+            "url": "https://www.mt.co.kr/society/2026/07/29/2026072915591064038",
+            "source": "머니투데이",
+            "date": "2026-07-29"
+          },
+          {
+            "title": "법원, 회생절차 개시결정 한달 보류…JTBC \"채권자에 사과\"",
+            "url": "https://isplus.com/article/view/isp202607300099",
+            "source": "일간스포츠",
+            "date": "2026-07-30"
+          }
+        ],
+        "overall_sentiment": "negative",
+        "skip_reason": null,
+        "timestamp": 1785715736623
+      },
+      "중앙일보": {
+        "company": "중앙일보",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "negative",
+        "skip_reason": "no_new_news",
+        "timestamp": 1785715736623
+      },
+      "제주항공": {
+        "company": "제주항공",
+        "risk_factors": [
+          {
+            "rank": 1,
+            "title": "2분기 실적 악화 전망, 고유가·고환율發 수익성 우려 확대",
+            "detail": "2026년 7월 29일 금융정보업체 FN가이드 증권가 컨센서스에 따르면 제주항공은 2분기 매출 4504억원, 영업손실 556억원을 기록할 것으로 전망되고 있습니다. 매출은 전년 동기 대비 35.5% 증가할 것으로 예상되나 영업손실은 32.8% 확대되고, 당기순손실은 578억원으로 손실 규모가 485.9% 늘어날 것으로 관측됩니다. 호르무즈 해협 통행 제한 여파로 2분기 평균 항공유 가격이 전년 동기 대비 약 107% 급등하고 원·달러 환율도 1500원 안팎의 높은 수준을 유지하면서 외화 표시 리스료와 차입금 부담이 확대된 데 따른 것으로 분석됩니다. 한국투자증권은 대다수 LCC가 자본잠식 상태에 놓여 있다고 평가하며 연내 일부 LCC의 구조조정 가능성도 열어둬야 하는 상황이라고 진단하였습니다.",
+            "severity": "medium"
+          },
+          {
+            "rank": 2,
+            "title": "대한항공·아시아나 통합 및 통합 LCC 출범에 따른 경쟁 구도 재편 부담",
+            "detail": "삼성증권은 대한항공과 아시아나항공의 기업결합 절차가 마무리되면 연말 초대형 대형항공사(FSC)와 통합 LCC가 출범하며 국내 항공시장 경쟁 구도가 크게 재편될 것으로 전망하였습니다. 양사와 계열 LCC 3사의 국제선 여객 점유율은 지난해 기준 약 46%에 달하며, 외항사를 제외할 경우 점유율이 70%에 육박해 사실상 전 노선에서 압도적인 시장 지위를 확보할 것으로 예상됩니다. 통합 이후 대한항공의 가격 결정력이 한층 강화될 것으로 전망되어, 제주항공을 포함한 LCC는 비용 부담 확대와 함께 통합 FSC의 가격 전략 변화에도 대응해야 하는 이중 부담을 안게 될 것으로 분석됩니다.",
+            "severity": "medium"
+          }
+        ],
+        "sources": [
+          {
+            "title": "'고유가' 덮친 LCC, 2분기 재무개선 시급",
+            "url": "https://www.hansbiz.co.kr/news/articleView.html?idxno=853169",
+            "source": "한스경제",
+            "date": "2026-07-29"
+          }
+        ],
+        "overall_sentiment": "negative",
+        "skip_reason": null,
+        "timestamp": 1785715736623
+      },
+      "AK플라자": {
+        "company": "AK플라자",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "negative",
+        "skip_reason": "no_new_news",
+        "timestamp": 1785715736623
+      },
+      "이랜드리테일": {
+        "company": "이랜드리테일",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1785715736623
+      },
+      "웅진씽크빅": {
+        "company": "웅진씽크빅",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1785715736623
+      },
+      "솔루스첨단소재": {
+        "company": "솔루스첨단소재",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1785715736623
+      },
+      "동국제강": {
+        "company": "동국제강",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "positive",
+        "skip_reason": "no_new_news",
+        "timestamp": 1785715736624
       }
     }
   }
