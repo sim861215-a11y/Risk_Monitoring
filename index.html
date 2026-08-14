@@ -1,42 +1,84 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8"/>
+<html lang="ko"><head>
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<script>/* 허브가 넘긴 #theme=dark|light 를 이어받는다(출처가 달라 localStorage 공유 불가). */
+(function(){var m=location.hash.match(/theme=(dark|light)/);var t=m&&m[1];try{if(t)localStorage.setItem('hub_theme',t);else t=localStorage.getItem('hub_theme');}catch(e){}if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 <title>리스크 분석 리포트</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet"/>
 <style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
+@import url('https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css');
+/* 리스크 통합 지원 플랫폼(허브)의 "미우라 전개 시트" 토큰.
+   출처: Project Milestone/frontend/재무정보_확인.html — 조회용 화면과 같은 세계.
+   GitHub Pages 에 단일 파일로 올라가므로 CSS 를 인라인 유지한다. */
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#060a10;color:#e2e8f0;font-family:'Noto Sans KR',sans-serif;min-height:100vh}
-#hdr{background:#080c12;border-bottom:1px solid #1e293b;padding:16px 24px;position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.logo{display:flex;align-items:center;gap:13px}
-.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;font-size:19px;font-family:'IBM Plex Mono',monospace}
-.main{max-width:800px;margin:0 auto;padding:28px 16px}
-select{background:#0d1117;border:1px solid #1e293b;border-radius:10px;padding:10px 16px;color:#e2e8f0;font-family:inherit;font-size:14px;outline:none;cursor:pointer}
-.rcard{border-radius:14px;overflow:hidden;margin-bottom:20px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.rcard-hdr{display:flex;align-items:center;justify-content:space-between;padding:17px 22px}
-.badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:800}
-.risk-item{background:#090c10;border-radius:12px;padding:17px 20px;border:1px solid #1e293b;border-left-width:5px;margin-bottom:10px}
-.risk-hdr{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
-.risk-num{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#000}
-.risk-title{flex:1;font-size:15px;font-weight:800;color:#f1f5f9;line-height:1.4}
-.risk-sev{flex-shrink:0;font-size:10px;font-weight:800;border-radius:4px;padding:2px 7px;border-width:1px;border-style:solid;opacity:.85}
-.risk-detail{font-size:13px;color:#94a3b8;line-height:1.85;padding-left:32px;white-space:pre-wrap}
-.src{font-size:12px;color:#475569;margin-top:12px;padding-left:22px;border-top:1px solid #1e293b;padding-top:12px}
-.src a{color:#60a5fa;text-decoration:none;display:block;margin-bottom:5px}.src a:hover{text-decoration:underline}
-.empty{text-align:center;padding:80px 0;color:#334155}
-.lbl{font-size:10px;color:#475569;font-weight:800;letter-spacing:2px;margin-bottom:12px}
-.foot{text-align:center;color:#334155;font-size:11px;padding:30px 0}
+:root{
+  color-scheme:light dark;
+  --bg:#F5F4EF;--card:#FFFFFF;--card-border:#C6C3B8;--line-soft:#DEDCD2;
+  --text:#131311;--text-sub:#45453F;--text-faint:#98978C;
+  --foil:#D4AF37;--foil-deep:#C09A25;--gold-ink:#8F7118;
+  --fold-face:#EDEBE1;--section-bg:#EDF3FA;
+  --ok:#2E7A4C;--error:#C03A2B;--link:#3D6FB8;
+  --shadow:0 1px 2px rgba(19,19,17,.10),0 2px 8px rgba(19,19,17,.05);
+  --font:'Pretendard Variable',Pretendard,'NanumSquare','NanumGothic','Malgun Gothic',-apple-system,sans-serif;
+  --surface:var(--card);--surface2:var(--fold-face);--border:var(--card-border);
+  --text-muted:var(--text-sub);--primary:var(--link);--accent-bg:var(--section-bg);
+  --warn:var(--gold-ink);--danger:var(--error);
+  --ok-bg:#E9F3EC;--danger-bg:#FBECE9;
+}
+:root[data-theme="dark"]{
+  --bg:#14130F;--card:#1C1B15;--card-border:#3B3930;--line-soft:#2E2C24;
+  --text:#EDEBE1;--text-sub:#B5B2A4;--text-faint:#7A786C;
+  --foil:#D4AF37;--foil-deep:#B08D22;--gold-ink:#E3C24A;
+  --fold-face:#26241C;--section-bg:#1E2A3A;
+  --ok:#58B47E;--error:#E07A6B;--link:#7FA8E0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.35);
+  --ok-bg:#17301F;--danger-bg:#3A211C;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14130F;--card:#1C1B15;--card-border:#3B3930;--line-soft:#2E2C24;
+  --text:#EDEBE1;--text-sub:#B5B2A4;--text-faint:#7A786C;
+  --foil:#D4AF37;--foil-deep:#B08D22;--gold-ink:#E3C24A;
+  --fold-face:#26241C;--section-bg:#1E2A3A;
+  --ok:#58B47E;--error:#E07A6B;--link:#7FA8E0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.35);
+  --ok-bg:#17301F;--danger-bg:#3A211C;
+}}
+/* 100vh는 모바일 브라우저 주소창 때문에 화면이 튄다(iOS Safari). dvh가 실제 보이는 높이다. */
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.5;min-height:100dvh}
+#hdr{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:24px 32px;background:var(--surface);border-bottom:1px solid var(--border)}
+#hdr h1{margin:0;font-size:1.4rem}
+.subtitle{margin:2px 0 0;color:var(--text-muted);font-size:.9rem}
+.main{max-width:1080px;margin:0 auto;padding:24px 20px 40px}
+select{padding:9px 14px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-family:inherit;font-size:.9rem;cursor:pointer}
+.rcard{margin-bottom:16px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.rcard-hdr{display:flex;justify-content:space-between;align-items:center;padding:16px 20px}
+.badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:6px;font-size:.72rem;font-weight:600}
+.risk-item{margin-bottom:10px;padding:16px 18px;background:var(--surface2);border:1px solid var(--border);border-left-width:4px;border-radius:8px}
+.risk-hdr{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.risk-num{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--bg)}
+.risk-title{flex:1;font-size:.98rem;font-weight:600;line-height:1.4}
+.risk-sev{flex-shrink:0;padding:2px 7px;border:1px solid;border-radius:6px;font-size:.72rem;font-weight:600}
+.risk-detail{padding-left:32px;color:var(--text-muted);font-size:.88rem;line-height:1.8;white-space:pre-wrap}
+.src{margin-top:12px;padding-top:12px;padding-left:22px;border-top:1px solid var(--border);color:var(--text-muted);font-size:.82rem}
+.src a{display:block;margin-bottom:5px;color:var(--primary);text-decoration:none}
+.src a:hover{text-decoration:underline}
+.empty{padding:80px 0;color:var(--text-muted);text-align:center}
+.lbl{margin-bottom:10px;color:var(--text-muted);font-size:.78rem;font-weight:600}
+.foot{padding:30px 0;color:var(--text-muted);font-size:.78rem;text-align:center}
+@media (max-width:600px){#hdr{padding:18px 20px}}
 </style></head><body>
 <div id="hdr">
-  <div class="logo"><div class="logo-icon">R</div>
-    <div><div style="font-weight:900;color:#f59e0b;font-size:15px;letter-spacing:0.5px">리스크 모니터링 시스템</div>
-    <div style="font-size:10px;color:#475569;font-weight:700;margin-top:2px">기업 리스크 분석 리포트 · 조회 전용</div></div>
+  <div>
+    <h1>리스크 모니터링 시스템</h1>
+    <p class="subtitle">기업 리스크 분석 리포트 · 조회 전용</p>
   </div>
   <select id="date-sel" onchange="render()"></select>
 </div>
 <div class="main"><div id="content"></div><div class="foot" id="foot"></div></div>
 <script>
-const SENT={positive:{border:'#059669',label:'긍정 📈',bg:'#064e3b',text:'#6ee7b7'},neutral:{border:'#475569',label:'중립 ➖',bg:'#1e293b',text:'#94a3b8'},negative:{border:'#dc2626',label:'리스크 ⚠️',bg:'#450a0a',text:'#f87171'}};
-const SVC={high:'#dc2626',medium:'#f59e0b',low:'#3b82f6'};
+const SENT={positive:{border:'var(--ok)',label:'긍정 📈',bg:'var(--ok-bg)',text:'var(--ok)'},neutral:{border:'var(--border)',label:'중립 ➖',bg:'var(--surface2)',text:'var(--text-muted)'},negative:{border:'var(--danger)',label:'리스크 ⚠️',bg:'var(--danger-bg)',text:'var(--danger)'}};
+const SVC={high:'var(--danger)',medium:'var(--warn)',low:'var(--primary)'};
 const SVL={high:'상',medium:'중',low:'하'};
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const fmt=s=>s?s.slice(0,4)+'.'+s.slice(5,7)+'.'+s.slice(8,10):'';
@@ -63,11 +105,11 @@ function render(){
     const risks=res.risk_factors||[];
     const srcs=res.sources||[];
     const riskHtml=risks.length===0
-      ?'<div style="padding:40px 22px;text-align:center;color:#475569;font-size:14px">신규 리스크가 발견되지 않았습니다.</div>'
-      :'<div style="padding:18px 22px">'+risks.map(rf=>{const c=SVC[rf.severity]||'#f59e0b';return '<div class="risk-item" style="border-left-color:'+c+'"><div class="risk-hdr"><span class="risk-num" style="background:'+c+'">'+(rf.rank||'')+'</span><span class="risk-title">'+esc(rf.title)+'</span><span class="risk-sev" style="color:'+c+';border-color:'+c+'">심각도 '+(SVL[rf.severity]||'-')+'</span></div><div class="risk-detail">'+esc(rf.detail)+'</div></div>';}).join('')
+      ?'<div style="padding:40px 22px;text-align:center;color:var(--text-muted);font-size:.9rem">신규 리스크가 발견되지 않았습니다.</div>'
+      :'<div style="padding:18px 20px">'+risks.map(rf=>{const c=SVC[rf.severity]||'var(--warn)';return '<div class="risk-item" style="border-left-color:'+c+'"><div class="risk-hdr"><span class="risk-num" style="background:'+c+'">'+(rf.rank||'')+'</span><span class="risk-title">'+esc(rf.title)+'</span><span class="risk-sev" style="color:'+c+';border-color:'+c+'">심각도 '+(SVL[rf.severity]||'-')+'</span></div><div class="risk-detail">'+esc(rf.detail)+'</div></div>';}).join('')
       +(srcs.length?'<div class="src"><div class="lbl">검토 기사</div>'+srcs.map(x=>x.url?'<a href="'+esc(x.url)+'" target="_blank">· '+esc(x.title)+' ('+esc(x.source||'')+')</a>':'<div style="margin-bottom:5px">· '+esc(x.title)+'</div>').join('')+'</div>':'')
       +'</div>';
-    return '<div class="rcard" style="border:1px solid '+s.border+';background:#0d1117"><div class="rcard-hdr"><div style="font-weight:900;font-size:17px">'+esc(name)+'</div><span class="badge" style="background:'+s.bg+';color:'+s.text+';border:1px solid '+s.border+'">'+s.label+'</span></div>'+riskHtml+'</div>';
+    return '<div class="rcard" style="border:1px solid '+s.border+';background:var(--surface)"><div class="rcard-hdr"><div style="font-weight:600;font-size:1.05rem">'+esc(name)+'</div><span class="badge" style="background:'+s.bg+';color:'+s.text+';border:1px solid '+s.border+'">'+s.label+'</span></div>'+riskHtml+'</div>';
   }).join('');
 }
 load();
