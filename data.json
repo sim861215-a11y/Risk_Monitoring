@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-24T09:17:39.298947",
-  "latest": "2026-08-24",
+  "updated": "2026-08-31T09:20:34.053649",
+  "latest": "2026-08-31",
   "reports": {
     "2026-05-07": {
       "JTBC": {
@@ -3282,6 +3282,136 @@
         "overall_sentiment": "neutral",
         "skip_reason": "no_new_news",
         "timestamp": 1787530587865
+      }
+    },
+    "2026-08-31": {
+      "동국제강": {
+        "company": "동국제강",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
+      },
+      "에스엘엘중앙": {
+        "company": "에스엘엘중앙",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
+      },
+      "JTBC": {
+        "company": "JTBC",
+        "risk_factors": [
+          {
+            "rank": 1,
+            "title": "법원, JTBC 회생절차 개시 결정…ARS 자율협상 최종 결렬",
+            "detail": "서울회생법원 회생2부(재판장 정준영 법원장)는 2026년 8월 28일 오전 JTBC의 자율구조조정지원(ARS) 절차를 종료하고 회생절차 개시를 결정했다. 6월 30일 ARS 승인 이후 두 차례 보류기간을 연장하며 채권단과 자율협상을 진행했으나 자금 지원 및 구조조정안에 대한 최종 합의에 이르지 못했다. 재판부는 재정적 위기의 배경으로 올림픽 중계권료 지급에 따른 단기간 대규모 지출과 중앙그룹 전반의 유동성 악화, 방송업계 시장환경 변화를 지목했다. 이로써 중앙홀딩스·콘텐트리중앙·중앙피앤아이·메가박스중앙을 포함한 중앙그룹 계열사 5곳이 모두 법정관리 체제에 들어갔다. JTBC는 2026년 6월 12일 206억원 규모 유동화 차입금을 상환하지 못해 채무불이행을 선언한 바 있다.",
+            "severity": "high"
+          },
+          {
+            "rank": 2,
+            "title": "회생계획안 제출 기한 2027년 1월…매각 작업 본격화",
+            "detail": "회생절차 개시에 따라 JTBC는 2027년 1월까지 회생계획안을 법원에 제출해야 한다. 법원은 계속기업가치와 청산가치를 비교·평가해 회생 인가 여부를 판단하게 되며, 이 과정에서 조속한 매각을 통한 경영 정상화가 유력한 방안으로 거론되고 있다. 방송사 지분 매각은 방송통신위원회 승인 등 규제 절차가 수반돼 절차 지연 가능성이 있다. 회생계획 수립 과정에서 채권자별 채무조정 비율을 둘러싼 갈등이 재차 부각될 수 있다.",
+            "severity": "high"
+          }
+        ],
+        "sources": [
+          {
+            "title": "법원, JTBC 회생절차 개시 결정…매각 작업 본격화",
+            "url": "https://www.hankyung.com/article/202608289063i",
+            "source": "한국경제",
+            "date": "2026-08-28"
+          },
+          {
+            "title": "[속보] 법원, JTBC 회생절차 개시 결정",
+            "url": "https://www.hankyung.com/article/2026082889527",
+            "source": "한국경제",
+            "date": "2026-08-28"
+          },
+          {
+            "title": "법원, JTBC 회생절차 개시 결정…내년 1월까지 회생계획안 제출",
+            "url": "http://www.iminju.net/news/articleView.html?idxno=168709",
+            "source": "민주신문",
+            "date": "2026-08-28"
+          }
+        ],
+        "overall_sentiment": "negative",
+        "skip_reason": null,
+        "timestamp": 1788135621060
+      },
+      "한온시스템": {
+        "company": "한온시스템",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
+      },
+      "고려아연": {
+        "company": "고려아연",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
+      },
+      "솔루스첨단소재": {
+        "company": "솔루스첨단소재",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
+      },
+      "중앙일보": {
+        "company": "중앙일보",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
+      },
+      "제주항공": {
+        "company": "제주항공",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
+      },
+      "AK플라자": {
+        "company": "AK플라자",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
+      },
+      "이랜드리테일": {
+        "company": "이랜드리테일",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
+      },
+      "웅진씽크빅": {
+        "company": "웅진씽크빅",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
+      },
+      "웅진": {
+        "company": "웅진",
+        "risk_factors": [],
+        "sources": [],
+        "overall_sentiment": "neutral",
+        "skip_reason": "no_new_news",
+        "timestamp": 1788135621060
       }
     }
   }
